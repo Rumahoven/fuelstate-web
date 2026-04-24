@@ -45,9 +45,8 @@ input {
   position: relative;
   overflow-x: hidden;
   background:
-    radial-gradient(circle at 50% 40%, rgba(255, 184, 62, 0.16), transparent 20%),
-    linear-gradient(180deg, rgba(3, 6, 10, 0.92) 0%, rgba(3, 6, 10, 0.58) 32%, rgba(3, 6, 10, 0.48) 52%, rgba(3, 6, 10, 0.82) 100%),
-    url("background-bottom.png") center 34% / cover no-repeat fixed;
+    linear-gradient(180deg, rgba(4, 7, 11, 0.72) 0%, rgba(4, 7, 11, 0.34) 34%, rgba(4, 7, 11, 0.46) 58%, rgba(4, 7, 11, 0.8) 100%),
+    url("background-home-static.png") center center / cover no-repeat fixed;
 }
 
 .comp-page::before,
@@ -63,9 +62,8 @@ input {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(4, 7, 11, 0.05) 0%, rgba(4, 7, 11, 0.16) 58%, rgba(4, 7, 11, 0.32) 100%),
-    radial-gradient(circle at 50% 18%, rgba(255, 198, 72, 0.08), transparent 18%),
-    radial-gradient(circle at 50% 82%, rgba(255, 170, 48, 0.07), transparent 22%);
+    linear-gradient(180deg, rgba(4, 7, 11, 0.12) 0%, rgba(4, 7, 11, 0.04) 24%, rgba(4, 7, 11, 0.16) 70%, rgba(4, 7, 11, 0.34) 100%),
+    radial-gradient(circle at 50% 64%, rgba(255, 188, 64, 0.14), transparent 16%);
 }
 
 .comp-page::after {

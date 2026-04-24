@@ -1,0 +1,132 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body.docs-page {
+  position: relative;
+  min-height: 100vh;
+  background:
+    linear-gradient(180deg, rgba(5, 8, 12, 0.9) 0%, rgba(5, 8, 12, 0.78) 28%, rgba(5, 8, 12, 0.82) 100%),
+    url("background-docs-static.png") center center / cover no-repeat fixed !important;
+  color: rgba(255, 255, 255, 0.9);
+  overflow-x: hidden;
+}
+
+body.docs-page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 22% 0, rgba(255, 184, 68, 0.18), transparent 22%),
+    radial-gradient(circle at 50% 82%, rgba(255, 177, 56, 0.08), transparent 18%),
+    linear-gradient(180deg, rgba(5, 8, 12, 0.24) 0%, rgba(5, 8, 12, 0.04) 22%, rgba(5, 8, 12, 0.22) 100%);
+  z-index: 0;
+}
+
+body.docs-page nav,
+body.docs-page main,
+body.docs-page footer {
+  position: relative;
+  z-index: 1;
+}
+
+body.docs-page nav {
+  background: rgba(7, 10, 15, 0.42);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+body.docs-page nav img {
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.24);
+}
+
+body.docs-page main {
+  padding-top: 72px !important;
+  padding-bottom: 104px !important;
+}
+
+body.docs-page footer {
+  background: rgba(7, 10, 15, 0.32);
+  backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+body.docs-page .toc,
+body.docs-page .highlight-box,
+body.docs-page .card,
+body.docs-page .contact-box,
+body.docs-page .termly-wrap,
+body.docs-page .success-box.active,
+body.docs-page .state.active .detail-list,
+body.docs-page #form-section,
+body.docs-page .faq-item,
+body.docs-page .state.active {
+  position: relative;
+}
+
+body.docs-page .toc,
+body.docs-page .highlight-box,
+body.docs-page .card,
+body.docs-page .contact-box,
+body.docs-page .termly-wrap {
+  background: linear-gradient(180deg, rgba(13, 18, 26, 0.72), rgba(9, 13, 19, 0.6)) !important;
+  border-color: rgba(255, 255, 255, 0.09) !important;
+  box-shadow:
+    0 22px 70px rgba(0, 0, 0, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(14px);
+}
+
+body.docs-page .faq-item {
+  border-bottom-color: rgba(255, 255, 255, 0.09) !important;
+}
+
+body.docs-page .doc-title,
+body.docs-page h1,
+body.docs-page h2,
+body.docs-page .card-title,
+body.docs-page .faq-q {
+  text-shadow: 0 8px 28px rgba(0, 0, 0, 0.22);
+}
+
+body.docs-page .doc-meta,
+body.docs-page .subtitle,
+body.docs-page p,
+body.docs-page li,
+body.docs-page .faq-a,
+body.docs-page .response-time {
+  color: rgba(255, 255, 255, 0.72) !important;
+}
+
+body.docs-page a {
+  transition: color 140ms ease, opacity 140ms ease;
+}
+
+body.docs-page .contact-btn,
+body.docs-page button[type="submit"] {
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.2);
+}
+
+body.docs-page .termly-wrap {
+  padding: 20px 24px;
+  border-radius: 16px;
+}
+
+@media (max-width: 760px) {
+  body.docs-page main {
+    padding-top: 56px !important;
+    padding-bottom: 88px !important;
+  }
+
+  body.docs-page .termly-wrap {
+    padding: 16px 18px;
+  }
+}
