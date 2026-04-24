@@ -97,41 +97,93 @@ input {
 
 .comp-panel--hero {
   width: min(100%, var(--panel-width-hero));
+  isolation: isolate;
+}
+
+.comp-panel--hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(4, 7, 11, 0.4) 0%, rgba(4, 7, 11, 0.1) 18%, rgba(4, 7, 11, 0.03) 42%, rgba(4, 7, 11, 0.22) 76%, rgba(4, 7, 11, 0.44) 100%),
+    linear-gradient(90deg, rgba(4, 7, 11, 0.96) 0%, rgba(4, 7, 11, 0.76) 8%, rgba(4, 7, 11, 0.28) 16%, rgba(4, 7, 11, 0.04) 24%, rgba(4, 7, 11, 0) 34%, rgba(4, 7, 11, 0) 66%, rgba(4, 7, 11, 0.04) 76%, rgba(4, 7, 11, 0.28) 84%, rgba(4, 7, 11, 0.76) 92%, rgba(4, 7, 11, 0.96) 100%);
 }
 
 .comp-panel--hero .comp-image {
-  -webkit-mask-image: linear-gradient(
-    to right,
-    transparent 0,
-    rgba(0, 0, 0, 0.88) 8%,
-    #000 14%,
-    #000 86%,
-    rgba(0, 0, 0, 0.88) 92%,
-    transparent 100%
-  );
-  mask-image: linear-gradient(
-    to right,
-    transparent 0,
-    rgba(0, 0, 0, 0.88) 8%,
-    #000 14%,
-    #000 86%,
-    rgba(0, 0, 0, 0.88) 92%,
-    transparent 100%
-  );
+  position: relative;
+  z-index: 0;
+  -webkit-mask-image:
+    linear-gradient(
+      to right,
+      transparent 0,
+      rgba(0, 0, 0, 0.88) 5%,
+      rgba(0, 0, 0, 0.98) 11%,
+      #000 18%,
+      #000 82%,
+      rgba(0, 0, 0, 0.98) 89%,
+      rgba(0, 0, 0, 0.88) 95%,
+      transparent 100%
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 0,
+      rgba(0, 0, 0, 0.9) 8%,
+      #000 18%,
+      #000 68%,
+      rgba(0, 0, 0, 0.86) 84%,
+      rgba(0, 0, 0, 0.34) 94%,
+      transparent 100%
+    );
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(
+      to right,
+      transparent 0,
+      rgba(0, 0, 0, 0.84) 6%,
+      #000 14%,
+      #000 86%,
+      rgba(0, 0, 0, 0.84) 94%,
+      transparent 100%
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 0,
+      rgba(0, 0, 0, 0.9) 8%,
+      #000 18%,
+      #000 68%,
+      rgba(0, 0, 0, 0.86) 84%,
+      rgba(0, 0, 0, 0.34) 94%,
+      transparent 100%
+    );
+  mask-composite: intersect;
 }
 
 .comp-panel--works {
   filter: none;
+  isolation: isolate;
+}
+
+.comp-panel--works::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(90deg, rgba(4, 7, 11, 0.94) 0%, rgba(4, 7, 11, 0.68) 8%, rgba(4, 7, 11, 0.22) 16%, rgba(4, 7, 11, 0) 26%, rgba(4, 7, 11, 0) 74%, rgba(4, 7, 11, 0.22) 84%, rgba(4, 7, 11, 0.68) 92%, rgba(4, 7, 11, 0.94) 100%);
 }
 
 .comp-panel--works .comp-image {
+  position: relative;
+  z-index: 0;
   -webkit-mask-image: linear-gradient(
       to right,
       transparent 0,
-      rgba(0, 0, 0, 0.92) 6%,
+      rgba(0, 0, 0, 0.96) 5%,
       #000 14%,
       #000 86%,
-      rgba(0, 0, 0, 0.92) 94%,
+      rgba(0, 0, 0, 0.96) 95%,
       transparent 100%
     ),
     linear-gradient(
@@ -371,14 +423,65 @@ input {
     margin-top: -18px;
   }
 
+  .comp-panel--hero::before {
+    background:
+      linear-gradient(180deg, rgba(4, 7, 11, 0.34) 0%, rgba(4, 7, 11, 0.06) 18%, rgba(4, 7, 11, 0.04) 48%, rgba(4, 7, 11, 0.22) 80%, rgba(4, 7, 11, 0.34) 100%),
+      linear-gradient(90deg, rgba(4, 7, 11, 0.98) 0%, rgba(4, 7, 11, 0.78) 7%, rgba(4, 7, 11, 0.22) 14%, rgba(4, 7, 11, 0) 22%, rgba(4, 7, 11, 0) 78%, rgba(4, 7, 11, 0.22) 86%, rgba(4, 7, 11, 0.78) 93%, rgba(4, 7, 11, 0.98) 100%);
+  }
+
+  .comp-panel--hero .comp-image {
+    -webkit-mask-image:
+      linear-gradient(
+        to right,
+        transparent 0,
+        rgba(0, 0, 0, 0.94) 4%,
+        rgba(0, 0, 0, 1) 9%,
+        #000 16%,
+        #000 84%,
+        rgba(0, 0, 0, 1) 91%,
+        rgba(0, 0, 0, 0.94) 96%,
+        transparent 100%
+      ),
+      linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0) 0,
+        rgba(0, 0, 0, 0.92) 7%,
+        #000 16%,
+        #000 72%,
+        rgba(0, 0, 0, 0.86) 86%,
+        rgba(0, 0, 0, 0.28) 95%,
+        transparent 100%
+      );
+    mask-image:
+      linear-gradient(
+        to right,
+        transparent 0,
+        rgba(0, 0, 0, 0.9) 4%,
+        #000 10%,
+        #000 90%,
+        rgba(0, 0, 0, 0.9) 96%,
+        transparent 100%
+      ),
+      linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0) 0,
+        rgba(0, 0, 0, 0.92) 7%,
+        #000 16%,
+        #000 72%,
+        rgba(0, 0, 0, 0.86) 86%,
+        rgba(0, 0, 0, 0.28) 95%,
+        transparent 100%
+      );
+  }
+
   .comp-panel--works .comp-image {
     -webkit-mask-image: linear-gradient(
         to right,
         transparent 0,
-        rgba(0, 0, 0, 0.94) 4%,
-        #000 10%,
-        #000 90%,
-        rgba(0, 0, 0, 0.94) 96%,
+        rgba(0, 0, 0, 0.98) 4%,
+        #000 12%,
+        #000 88%,
+        rgba(0, 0, 0, 0.98) 96%,
         transparent 100%
       ),
       linear-gradient(
@@ -391,10 +494,10 @@ input {
     mask-image: linear-gradient(
         to right,
         transparent 0,
-        rgba(0, 0, 0, 0.94) 4%,
-        #000 10%,
-        #000 90%,
-        rgba(0, 0, 0, 0.94) 96%,
+        rgba(0, 0, 0, 0.98) 4%,
+        #000 12%,
+        #000 88%,
+        rgba(0, 0, 0, 0.98) 96%,
         transparent 100%
       ),
       linear-gradient(
@@ -404,6 +507,10 @@ input {
         rgba(0, 0, 0, 0.88) 98%,
         transparent 100%
       );
+  }
+
+  .comp-panel--works::before {
+    background: linear-gradient(90deg, rgba(4, 7, 11, 0.98) 0%, rgba(4, 7, 11, 0.7) 7%, rgba(4, 7, 11, 0.18) 14%, rgba(4, 7, 11, 0) 24%, rgba(4, 7, 11, 0) 76%, rgba(4, 7, 11, 0.18) 86%, rgba(4, 7, 11, 0.7) 93%, rgba(4, 7, 11, 0.98) 100%);
   }
 
   .comp-footer {
