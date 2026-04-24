@@ -1,0 +1,6 @@
+.DS_Store
+node_modules/
+*.log
+# Reference images (kept locally, not deployed)
+Fuelstate Website.png
+How Fuelstate Works.png

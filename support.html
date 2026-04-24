@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support — Fuelstate</title>
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0B1019;
+      --text: rgba(255,255,255,0.87);
+      --text-dim: rgba(255,255,255,0.55);
+      --text-faint: rgba(255,255,255,0.40);
+      --border: rgba(255,255,255,0.07);
+      --gold: #C9963B;
+      --surface: rgba(255,255,255,0.04);
+    }
+    html { -webkit-font-smoothing: antialiased; }
+    body { background: var(--bg); color: var(--text); font-family: 'Outfit', sans-serif; }
+
+    nav {
+      padding: 20px 32px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    nav a { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    nav img { width: 28px; height: 28px; border-radius: 7px; }
+    nav span { font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 600; color: var(--text); }
+
+    main {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 64px 24px 100px;
+    }
+
+    .doc-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .doc-meta {
+      font-size: 15px;
+      color: var(--text-dim);
+      margin-bottom: 48px;
+      line-height: 1.6;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+    @media (max-width: 540px) { .card-grid { grid-template-columns: 1fr; } }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      text-decoration: none;
+      display: block;
+      transition: border-color 0.15s;
+    }
+    .card:hover { border-color: var(--gold); }
+    .card-icon { font-size: 28px; margin-bottom: 12px; }
+    .card-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .card-desc { font-size: 13px; color: var(--text-dim); line-height: 1.6; }
+
+    section { margin-bottom: 48px; }
+    h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+      padding: 20px 0;
+    }
+    .faq-item:first-child { padding-top: 0; }
+    .faq-q {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .faq-a { font-size: 14px; color: var(--text-dim); line-height: 1.7; }
+    .faq-a a { color: var(--gold); text-decoration: none; }
+    .faq-a a:hover { text-decoration: underline; }
+
+    .contact-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 32px;
+      text-align: center;
+    }
+    .contact-box p { font-size: 15px; color: var(--text-dim); line-height: 1.7; margin-bottom: 20px; }
+    .contact-btn {
+      display: inline-block;
+      background: var(--gold);
+      color: #0B1019;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      padding: 13px 28px;
+      border-radius: 30px;
+      text-decoration: none;
+    }
+    .contact-btn:hover { opacity: 0.9; }
+    .response-time {
+      font-size: 12px;
+      color: var(--text-faint);
+      margin-top: 14px;
+      margin-bottom: 0;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px;
+      text-align: center;
+    }
+    footer p { font-size: 13px; color: var(--text-faint); margin-bottom: 6px; }
+    footer a { color: var(--text-dim); text-decoration: none; }
+    footer a:hover { color: var(--gold); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html">
+    <img src="assets/logo.png" alt="Fuelstate">
+    <span>Fuelstate</span>
+  </a>
+</nav>
+
+<main>
+  <h1 class="doc-title">Support</h1>
+  <p class="doc-meta">We're here to help. Typical response time is within 48 hours.</p>
+
+  <div class="card-grid">
+    <a href="mailto:hello@fuelstate.app?subject=Bug Report" class="card">
+      <div class="card-icon">🐛</div>
+      <div class="card-title">Report a Bug</div>
+      <div class="card-desc">Something not working right? Let us know and we'll prioritize a fix.</div>
+    </a>
+    <a href="mailto:hello@fuelstate.app?subject=Feature Request" class="card">
+      <div class="card-icon">✨</div>
+      <div class="card-title">Feature Request</div>
+      <div class="card-desc">Have an idea that would make Fuelstate better? We'd love to hear it.</div>
+    </a>
+    <a href="mailto:hello@fuelstate.app?subject=Subscription Help" class="card">
+      <div class="card-icon">💳</div>
+      <div class="card-title">Subscription Help</div>
+      <div class="card-desc">Questions about billing, cancellation, or restoring your purchase.</div>
+    </a>
+    <a href="delete.html" class="card">
+      <div class="card-icon">🗑️</div>
+      <div class="card-title">Delete My Account</div>
+      <div class="card-desc">Request full deletion of your account and all associated data.</div>
+    </a>
+  </div>
+
+  <section>
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-item">
+      <p class="faq-q">How does Fuelstate calculate my fuel plan?</p>
+      <p class="faq-a">Fuelstate uses a deterministic sports-science algorithm that factors in your body weight, run distance, duration, intensity, terrain, and conditions to calculate precise carbohydrate, hydration, and sodium targets. No guesswork — everything is based on exercise physiology research.</p>
+    </div>
+
+    <div class="faq-item">
+      <p class="faq-q">Does Fuelstate access my health data?</p>
+      <p class="faq-a">Fuelstate can optionally read HealthKit data (heart rate, workouts) to improve plan accuracy. This data is processed on-device only and is never uploaded to our servers or shared with any third party. You can revoke access at any time in iOS Settings → Privacy &amp; Security → Health.</p>
+    </div>
+
+    <div class="faq-item">
+      <p class="faq-q">How do I restore my purchase?</p>
+      <p class="faq-a">Open Fuelstate → Settings → Subscription → Restore Purchases. Your subscription is tied to your Apple ID — as long as you're signed into the same Apple ID, your access will restore automatically.</p>
+    </div>
+
+    <div class="faq-item">
+      <p class="faq-q">How do I cancel my subscription?</p>
+      <p class="faq-a">Subscriptions are managed through Apple. Go to iOS Settings → your name → Subscriptions → Fuelstate → Cancel. You'll retain access until the end of your current billing period.</p>
+    </div>
+
+    <div class="faq-item">
+      <p class="faq-q">How do I delete my account?</p>
+      <p class="faq-a">You can delete your account in-app (Settings → Account → Delete Account) or via our <a href="delete.html">account deletion page</a>. All your data is permanently removed within 30 days.</p>
+    </div>
+
+    <div class="faq-item">
+      <p class="faq-q">What products does Fuelstate support?</p>
+      <p class="faq-a">Fuelstate includes a built-in catalog of common endurance nutrition products (gels, chews, drink mixes, electrolytes, salt tabs). You can also add custom products from your own kit.</p>
+    </div>
+  </section>
+
+  <div class="contact-box">
+    <p>Can't find what you're looking for? Send us a message and we'll get back to you within 48 hours.</p>
+    <a href="mailto:hello@fuelstate.app" class="contact-btn">EMAIL SUPPORT</a>
+    <p class="response-time">hello@fuelstate.app &nbsp;·&nbsp; Mon–Fri, typically within 48 hours</p>
+  </div>
+</main>
+
+<footer>
+  <p>&copy; 2026 Fuelstate. All rights reserved.</p>
+  <p><a href="privacy.html">Privacy Policy</a> &nbsp;·&nbsp; <a href="terms.html">Terms of Service</a> &nbsp;·&nbsp; <a href="index.html">Home</a></p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Confirming Deletion — Fuelstate</title>
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:       #0B1019;
+      --text:     rgba(255,255,255,0.87);
+      --text-dim: rgba(255,255,255,0.55);
+      --border:   rgba(255,255,255,0.07);
+      --gold:     #C9963B;
+      --red:      #e05252;
+      --green:    #4ade80;
+    }
+    html { -webkit-font-smoothing: antialiased; }
+    body { background: var(--bg); color: var(--text); font-family: 'Outfit', sans-serif; min-height: 100vh; }
+
+    nav {
+      padding: 20px 32px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+    }
+    nav a { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    nav img { width: 28px; height: 28px; border-radius: 7px; }
+    nav span { font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 600; color: var(--text); }
+
+    main {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 100px 24px;
+      text-align: center;
+    }
+
+    .state { display: none; flex-direction: column; align-items: center; gap: 16px; }
+    .state.active { display: flex; }
+
+    .icon { font-size: 48px; }
+
+    h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    p {
+      font-size: 15px;
+      color: var(--text-dim);
+      line-height: 1.65;
+      max-width: 380px;
+    }
+
+    /* Spinner */
+    .spinner {
+      width: 40px;
+      height: 40px;
+      border: 3px solid rgba(255,255,255,0.1);
+      border-top-color: var(--gold);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin-bottom: 8px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .detail-list {
+      list-style: none;
+      text-align: left;
+      width: 100%;
+      max-width: 340px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 4px;
+    }
+    .detail-list li {
+      font-size: 13px;
+      color: var(--text-dim);
+      padding-left: 18px;
+      position: relative;
+      line-height: 1.5;
+    }
+    .detail-list li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--green);
+      font-size: 11px;
+    }
+
+    .home-link {
+      display: inline-block;
+      margin-top: 8px;
+      font-size: 14px;
+      color: var(--gold);
+      text-decoration: none;
+    }
+    .home-link:hover { text-decoration: underline; }
+
+    .error-detail {
+      font-size: 13px;
+      color: var(--red);
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html">
+    <img src="assets/logo.png" alt="Fuelstate">
+    <span>Fuelstate</span>
+  </a>
+</nav>
+
+<main>
+
+  <!-- Loading -->
+  <div class="state active" id="state-loading">
+    <div class="spinner"></div>
+    <h1>Deleting your account…</h1>
+    <p>This takes just a moment. Do not close this page.</p>
+  </div>
+
+  <!-- Success -->
+  <div class="state" id="state-success">
+    <div class="icon">✓</div>
+    <h1>Account deleted</h1>
+    <p>Your Fuelstate data has been permanently removed.</p>
+    <ul class="detail-list">
+      <li>Athlete profile and biometric data</li>
+      <li>All run records and fuel event history</li>
+      <li>Saved runs and carb loading plans</li>
+      <li>Product preferences and custom products</li>
+      <li>Account credentials</li>
+    </ul>
+    <p style="margin-top: 16px; font-size: 13px;">Apple Health workouts and third-party billing records remain outside our control — see our <a href="privacy.html" style="color: var(--gold); text-decoration: none;">Privacy Policy</a> for details.</p>
+    <a class="home-link" href="index.html">← Back to fuelstate.app</a>
+  </div>
+
+  <!-- Error: expired -->
+  <div class="state" id="state-expired">
+    <div class="icon" style="font-size: 36px; opacity: 0.6;">⏱</div>
+    <h1>Link expired</h1>
+    <p>This deletion link has expired or already been used. Links are valid for 24 hours.</p>
+    <a class="home-link" href="delete.html">Request a new link →</a>
+  </div>
+
+  <!-- Error: generic -->
+  <div class="state" id="state-error">
+    <div class="icon" style="font-size: 36px; opacity: 0.6;">⚠</div>
+    <h1>Something went wrong</h1>
+    <p>We weren't able to complete the deletion. Please try again or contact us.</p>
+    <p class="error-detail" id="error-detail"></p>
+    <a class="home-link" href="mailto:hello@fuelstate.app">Contact hello@fuelstate.app</a>
+  </div>
+
+</main>
+
+<script>
+  const SUPABASE_FUNCTIONS_URL = 'https://bghekdandbybblhwjjgc.supabase.co/functions/v1'
+
+  function showState(id) {
+    document.querySelectorAll('.state').forEach(el => el.classList.remove('active'))
+    document.getElementById(id).classList.add('active')
+  }
+
+  async function run() {
+    // Parse the URL hash that Supabase appends after magic link click:
+    // #access_token=xxx&token_type=bearer&type=magiclink&...
+    const hash   = window.location.hash.slice(1)
+    const params = new URLSearchParams(hash)
+
+    const accessToken = params.get('access_token')
+    const type        = params.get('type')
+
+    if (!accessToken || type !== 'magiclink') {
+      // No token in URL — user landed here directly, not from a magic link
+      showState('state-expired')
+      return
+    }
+
+    // Clear the token from the URL bar (cosmetic, not security-critical)
+    history.replaceState(null, '', window.location.pathname)
+
+    try {
+      const res = await fetch(`${SUPABASE_FUNCTIONS_URL}/confirm-deletion`, {
+        method:  'POST',
+        headers: {
+          'Content-Type':  'application/json',
+          'Authorization': `Bearer ${accessToken}`,
+        },
+      })
+
+      const data = await res.json().catch(() => ({}))
+
+      if (res.ok && data.success) {
+        showState('state-success')
+        return
+      }
+
+      // 401 = expired/invalid token
+      if (res.status === 401) {
+        showState('state-expired')
+        return
+      }
+
+      // Other error
+      const detail = document.getElementById('error-detail')
+      detail.textContent = data.error ?? ''
+      showState('state-error')
+
+    } catch (_) {
+      showState('state-error')
+    }
+  }
+
+  run()
+</script>
+
+</body>
+</html>

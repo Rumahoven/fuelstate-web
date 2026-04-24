@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Delete Account — Fuelstate</title>
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:       #0B1019;
+      --text:     rgba(255,255,255,0.87);
+      --text-dim: rgba(255,255,255,0.55);
+      --border:   rgba(255,255,255,0.07);
+      --gold:     #C9963B;
+      --red:      #e05252;
+      --surface:  rgba(255,255,255,0.04);
+    }
+    html { -webkit-font-smoothing: antialiased; }
+    body { background: var(--bg); color: var(--text); font-family: 'Outfit', sans-serif; min-height: 100vh; }
+
+    nav {
+      padding: 20px 32px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+    }
+    nav a { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    nav img { width: 28px; height: 28px; border-radius: 7px; }
+    nav span { font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 600; color: var(--text); }
+
+    main {
+      max-width: 520px;
+      margin: 0 auto;
+      padding: 72px 24px 100px;
+    }
+
+    h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+
+    .subtitle {
+      font-size: 15px;
+      color: var(--text-dim);
+      line-height: 1.6;
+      margin-bottom: 40px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+      margin-bottom: 24px;
+    }
+
+    .card-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 16px;
+    }
+
+    .data-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .data-list li {
+      font-size: 14px;
+      color: var(--text-dim);
+      padding-left: 16px;
+      position: relative;
+      line-height: 1.5;
+    }
+    .data-list li::before {
+      content: '·';
+      position: absolute;
+      left: 4px;
+      color: var(--red);
+    }
+    .data-list li.kept::before {
+      color: var(--text-dim);
+    }
+
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-dim);
+      margin-bottom: 8px;
+    }
+
+    input[type="email"] {
+      width: 100%;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 14px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 15px;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.15s;
+      margin-bottom: 16px;
+    }
+    input[type="email"]::placeholder { color: rgba(255,255,255,0.25); }
+    input[type="email"]:focus { border-color: rgba(255,255,255,0.25); }
+
+    button[type="submit"] {
+      width: 100%;
+      background: var(--red);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 13px 20px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      transition: opacity 0.15s;
+    }
+    button[type="submit"]:hover  { opacity: 0.85; }
+    button[type="submit"]:active { opacity: 0.7; }
+    button[type="submit"]:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    .success-box {
+      display: none;
+      text-align: center;
+      padding: 40px 0;
+    }
+    .success-box .icon {
+      font-size: 40px;
+      margin-bottom: 16px;
+    }
+    .success-box h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .success-box p {
+      font-size: 14px;
+      color: var(--text-dim);
+      line-height: 1.6;
+    }
+
+    .alt-note {
+      font-size: 13px;
+      color: var(--text-dim);
+      line-height: 1.6;
+      text-align: center;
+      margin-top: 32px;
+    }
+    .alt-note strong { color: var(--text); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html">
+    <img src="assets/logo.png" alt="Fuelstate">
+    <span>Fuelstate</span>
+  </a>
+</nav>
+
+<main>
+  <h1>Delete Your Account</h1>
+  <p class="subtitle">Enter the email address associated with your Fuelstate account. We'll send you a secure link to confirm and complete the deletion.</p>
+
+  <!-- What gets deleted -->
+  <div class="card">
+    <div class="card-title">What will be deleted</div>
+    <ul class="data-list">
+      <li>Athlete profile and biometric data</li>
+      <li>All run records and fuel event history</li>
+      <li>Saved runs and carb loading plans</li>
+      <li>Product preferences and custom products</li>
+      <li>Account credentials</li>
+    </ul>
+  </div>
+
+  <!-- What isn't deleted -->
+  <div class="card">
+    <div class="card-title">What we cannot delete on your behalf</div>
+    <ul class="data-list">
+      <li class="kept">Apple Health workouts — remove manually in the Health app</li>
+      <li class="kept">RevenueCat purchase history — retained for Apple billing compliance</li>
+      <li class="kept">Sentry crash reports — auto-purged within ~90 days</li>
+    </ul>
+  </div>
+
+  <!-- Form -->
+  <div id="form-section">
+    <form id="delete-form">
+      <label for="email">Email address</label>
+      <input type="email" id="email" name="email" placeholder="you@example.com" required autocomplete="email">
+      <button type="submit" id="submit-btn">Send Deletion Link</button>
+    </form>
+  </div>
+
+  <!-- Success state -->
+  <div class="success-box" id="success-box">
+    <div class="icon">📬</div>
+    <h2>Check your email</h2>
+    <p>If an account exists for that address, you'll receive a confirmation link within a few minutes.<br><br>Click the link to permanently delete your account.</p>
+  </div>
+
+  <p class="alt-note">
+    <strong>Faster option:</strong> If you have the app, go to Settings → Delete Account to delete everything instantly.
+  </p>
+</main>
+
+<script>
+  const SUPABASE_FUNCTIONS_URL = 'https://bghekdandbybblhwjjgc.supabase.co/functions/v1'
+
+  const form       = document.getElementById('delete-form')
+  const submitBtn  = document.getElementById('submit-btn')
+  const formSection = document.getElementById('form-section')
+  const successBox  = document.getElementById('success-box')
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault()
+    const email = document.getElementById('email').value.trim()
+    if (!email) return
+
+    submitBtn.disabled    = true
+    submitBtn.textContent = 'Sending…'
+
+    try {
+      await fetch(`${SUPABASE_FUNCTIONS_URL}/request-deletion`, {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify({ email }),
+      })
+    } catch (_) {
+      // Swallow network errors — show success regardless (security)
+    }
+
+    formSection.style.display = 'none'
+    successBox.style.display  = 'block'
+  })
+</script>
+
+</body>
+</html>

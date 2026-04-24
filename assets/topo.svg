@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 1000" preserveAspectRatio="xMinYMid slice" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="topoRainbow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#F97316"/>
+      <stop offset="18%"  stop-color="#FACC15"/>
+      <stop offset="36%"  stop-color="#4ADE80"/>
+      <stop offset="54%"  stop-color="#22D3EE"/>
+      <stop offset="72%"  stop-color="#818CF8"/>
+      <stop offset="90%"  stop-color="#E879F9"/>
+      <stop offset="100%" stop-color="#F43F5E"/>
+    </linearGradient>
+    <mask id="topoFade">
+      <linearGradient id="fadeG" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%"   stop-color="#fff" stop-opacity="1"/>
+        <stop offset="55%"  stop-color="#fff" stop-opacity="0.75"/>
+        <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+      </linearGradient>
+      <rect width="400" height="1000" fill="url(#fadeG)"/>
+    </mask>
+  </defs>
+  <g mask="url(#topoFade)" fill="none" stroke="url(#topoRainbow)" stroke-width="1.4" stroke-linecap="round">
+    <path d="M -20 40   C 60 80,  120 20,  200 90   S 320 140, 420 70"  opacity="0.85"/>
+    <path d="M -20 110  C 70 150, 130 90,  210 160  S 330 210, 420 140" opacity="0.78"/>
+    <path d="M -20 180  C 80 220, 140 160, 220 230  S 340 280, 420 210" opacity="0.72"/>
+    <path d="M -20 250  C 90 290, 150 230, 230 300  S 350 350, 420 280" opacity="0.66"/>
+    <path d="M -20 320  C 80 360, 160 300, 240 370  S 360 420, 420 350" opacity="0.6"/>
+    <path d="M -20 400  C 70 440, 150 380, 230 450  S 350 500, 420 430" opacity="0.55"/>
+    <path d="M -20 480  C 90 520, 160 460, 240 530  S 360 580, 420 510" opacity="0.5"/>
+    <path d="M -20 560  C 70 600, 150 540, 230 610  S 350 660, 420 590" opacity="0.45"/>
+    <path d="M -20 640  C 90 680, 160 620, 240 690  S 360 740, 420 670" opacity="0.42"/>
+    <path d="M -20 720  C 80 760, 150 700, 230 770  S 350 820, 420 750" opacity="0.42"/>
+    <path d="M -20 800  C 70 840, 160 780, 240 850  S 360 900, 420 830" opacity="0.45"/>
+    <path d="M -20 880  C 90 920, 150 860, 230 930  S 350 980, 420 910" opacity="0.5"/>
+    <path d="M -20 960  C 80 1000, 160 940, 240 1010 S 360 1060, 420 990" opacity="0.55"/>
+  </g>
+</svg>

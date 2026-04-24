@@ -1,0 +1,422 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  margin: 0;
+  background: #04070b;
+  color: rgba(255, 255, 255, 0.92);
+  font-family: "Outfit", system-ui, sans-serif;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+:root {
+  --panel-width-hero: 1586px;
+  --panel-width-works: 1536px;
+  --footer-width: 1120px;
+  --gold: #f5c542;
+  --text-dim: rgba(255, 255, 255, 0.72);
+  --status-ok: #62ed9f;
+  --status-err: #ff8d8d;
+}
+
+.comp-page {
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  background:
+    radial-gradient(circle at 50% 40%, rgba(255, 184, 62, 0.16), transparent 20%),
+    linear-gradient(180deg, rgba(3, 6, 10, 0.92) 0%, rgba(3, 6, 10, 0.58) 32%, rgba(3, 6, 10, 0.48) 52%, rgba(3, 6, 10, 0.82) 100%),
+    url("background-bottom.png") center 34% / cover no-repeat fixed;
+}
+
+.comp-page::before,
+.comp-page::after {
+  content: "";
+  left: 0;
+  right: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.comp-page::before {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(4, 7, 11, 0.05) 0%, rgba(4, 7, 11, 0.16) 58%, rgba(4, 7, 11, 0.32) 100%),
+    radial-gradient(circle at 50% 18%, rgba(255, 198, 72, 0.08), transparent 18%),
+    radial-gradient(circle at 50% 82%, rgba(255, 170, 48, 0.07), transparent 22%);
+}
+
+.comp-page::after {
+  display: none;
+}
+
+.comp-main {
+  position: relative;
+  z-index: 1;
+  padding: 0 16px 22px;
+}
+
+.comp-section {
+  margin: 0 auto;
+}
+
+.comp-section--hero {
+  padding-top: 0;
+}
+
+.comp-section--works {
+  position: relative;
+  margin-top: -34px;
+}
+
+.comp-panel {
+  position: relative;
+  width: min(100%, var(--panel-width-works));
+  margin: 0 auto;
+}
+
+.comp-panel--hero {
+  width: min(100%, var(--panel-width-hero));
+}
+
+.comp-panel--hero .comp-image {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    rgba(0, 0, 0, 0.88) 8%,
+    #000 14%,
+    #000 86%,
+    rgba(0, 0, 0, 0.88) 92%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    rgba(0, 0, 0, 0.88) 8%,
+    #000 14%,
+    #000 86%,
+    rgba(0, 0, 0, 0.88) 92%,
+    transparent 100%
+  );
+}
+
+.comp-panel--works {
+  filter: none;
+}
+
+.comp-panel--works .comp-image {
+  -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0,
+      rgba(0, 0, 0, 0.92) 6%,
+      #000 14%,
+      #000 86%,
+      rgba(0, 0, 0, 0.92) 94%,
+      transparent 100%
+    ),
+    linear-gradient(
+      to bottom,
+      #000 0,
+      #000 90%,
+      rgba(0, 0, 0, 0.86) 96%,
+      transparent 100%
+    );
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(
+      to right,
+      transparent 0,
+      rgba(0, 0, 0, 0.92) 6%,
+      #000 14%,
+      #000 86%,
+      rgba(0, 0, 0, 0.92) 94%,
+      transparent 100%
+    ),
+    linear-gradient(
+      to bottom,
+      #000 0,
+      #000 90%,
+      rgba(0, 0, 0, 0.86) 96%,
+      transparent 100%
+    );
+  mask-composite: intersect;
+}
+
+.comp-image {
+  width: 100%;
+  height: auto;
+}
+
+.waitlist-overlay {
+  position: absolute;
+  left: 20.45%;
+  top: 61.5%;
+  width: 59.05%;
+  height: 9.25%;
+  display: grid;
+  grid-template-columns: 1fr 39.8%;
+}
+
+.waitlist-overlay::before {
+  content: "";
+  position: absolute;
+  left: 1px;
+  top: 1px;
+  bottom: 1px;
+  width: calc(60.2% - 1px);
+  border-radius: 15px 0 0 15px;
+  background: rgba(11, 16, 25, 0.96);
+  opacity: 0;
+  transition: opacity 120ms ease;
+  pointer-events: none;
+}
+
+.waitlist-overlay::after {
+  content: "";
+  position: absolute;
+  left: 4.4%;
+  top: 50%;
+  width: 4.4%;
+  aspect-ratio: 1;
+  transform: translateY(-50%);
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23F5C542' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='5' width='18' height='14' rx='2'/%3E%3Cpath d='m3 7 9 6 9-6'/%3E%3C/svg%3E") center/contain no-repeat;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.waitlist-overlay input,
+.waitlist-overlay button {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: transparent;
+  outline: 0;
+}
+
+.waitlist-overlay input {
+  position: relative;
+  z-index: 1;
+  padding: 0 5.5% 0 12.3%;
+  color: transparent;
+  font-size: clamp(13px, 1.7vw, 27px);
+  letter-spacing: -0.01em;
+  caret-color: transparent;
+  text-shadow: none;
+}
+
+.waitlist-overlay input::placeholder {
+  color: transparent;
+}
+
+.waitlist-overlay input:focus {
+  color: rgba(255, 255, 255, 0.92);
+  caret-color: rgba(255, 255, 255, 0.92);
+}
+
+.waitlist-overlay:focus-within::before {
+  opacity: 1;
+}
+
+.waitlist-overlay:focus-within::after {
+  opacity: 1;
+}
+
+.waitlist-overlay input:focus::placeholder {
+  color: rgba(255, 255, 255, 0.58);
+}
+
+.waitlist-overlay button {
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+  color: transparent;
+}
+
+.waitlist-overlay button:disabled {
+  cursor: not-allowed;
+}
+
+.comp-status {
+  width: min(100%, 720px);
+  margin: 10px auto 0;
+  text-align: center;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.48);
+}
+
+.comp-status:empty {
+  display: none;
+}
+
+.waitlist-status[data-state="ok"] {
+  color: var(--status-ok);
+}
+
+.waitlist-status[data-state="err"] {
+  color: var(--status-err);
+}
+
+.comp-footer {
+  position: relative;
+  z-index: 1;
+  width: min(calc(100% - 32px), var(--footer-width));
+  margin: 22px auto 0;
+  padding: 0 0 34px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 20px;
+  color: var(--text-dim);
+}
+
+.footer-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.footer-brand img {
+  mix-blend-mode: screen;
+}
+
+.footer-brand span {
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  text-decoration: none;
+}
+
+.footer-copy {
+  text-align: right;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 900px) {
+  .comp-main {
+    padding: 0 0 18px;
+  }
+
+  .waitlist-overlay {
+    left: 2.95%;
+    top: 65.15%;
+    width: 75.4%;
+    height: 10.65%;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+
+  .waitlist-overlay::before {
+    width: calc(100% - 2px);
+    height: calc(50% - 1px);
+    border-radius: 15px 15px 0 0;
+  }
+
+  .waitlist-overlay::after {
+    left: 5.8%;
+    width: 6.2%;
+  }
+
+  .waitlist-overlay input {
+    padding: 0 8.5% 0 14.5%;
+    font-size: clamp(12px, 3.8vw, 22px);
+  }
+
+  .waitlist-overlay button {
+    grid-row: 2;
+  }
+
+  .comp-section--works {
+    margin-top: -18px;
+  }
+
+  .comp-panel--works .comp-image {
+    -webkit-mask-image: linear-gradient(
+        to right,
+        transparent 0,
+        rgba(0, 0, 0, 0.94) 4%,
+        #000 10%,
+        #000 90%,
+        rgba(0, 0, 0, 0.94) 96%,
+        transparent 100%
+      ),
+      linear-gradient(
+        to bottom,
+        #000 0,
+        #000 94%,
+        rgba(0, 0, 0, 0.88) 98%,
+        transparent 100%
+      );
+    mask-image: linear-gradient(
+        to right,
+        transparent 0,
+        rgba(0, 0, 0, 0.94) 4%,
+        #000 10%,
+        #000 90%,
+        rgba(0, 0, 0, 0.94) 96%,
+        transparent 100%
+      ),
+      linear-gradient(
+        to bottom,
+        #000 0,
+        #000 94%,
+        rgba(0, 0, 0, 0.88) 98%,
+        transparent 100%
+      );
+  }
+
+  .comp-footer {
+    width: min(calc(100% - 32px), 760px);
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+    gap: 16px;
+  }
+
+  .footer-copy {
+    text-align: center;
+  }
+}
